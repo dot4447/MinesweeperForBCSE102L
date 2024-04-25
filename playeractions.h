@@ -13,7 +13,7 @@ public:
     bool playMinesweeperUtil(Board& myBoard, Board& realBoard, int mines[][2], int row, int col, int* movesLeft)
     {
         // Base Case of Recursion
-        if (myBoard.board[row][col] != '-')
+        if (myBoard.board[row][col] != '~')
             return (false);
 
         int i, j;
@@ -21,11 +21,10 @@ public:
         // You are going to lose
         if (realBoard.board[row][col] == '*') {
             myBoard.board[row][col] = '*';
-            for (i = 0; i < MINES; i++)
-                myBoard.board[mines[i][0]][mines[i][1]]
-                    = '*';
+            for (i = 0; i < numofmines; i++)
+                myBoard.board[mines[i][0]][mines[i][1]] = '*';
 
-            myBoard.Display();
+            myBoard.display();
             printf("\nYou lost!\n");
             return (true);
         }
@@ -56,12 +55,13 @@ public:
     void cheatMinesweeper(Board& realBoard)
     {
         cout<<"The mines locations are:\n";
-        realBoard.Display();
+        realBoard.display();
         return;
     }
     // A Function to play Minesweeper game
-    void playMinesweeper(Board& realBoard, Board& myBoard)
+    void StartGame(Board& realBoard, Board& myBoard)
     {
+        int x, y;
         // Initially the game is not over
         bool gameOver = false;
         int movesLeft = side * side - numofmines;
@@ -73,7 +73,7 @@ public:
         int currentMoveIndex = 0;
         while (gameOver == false) {
             cout<<"Current Status of Board: \n";
-            myBoard.Display();
+            myBoard.display();
             myBoard.getMove(&x, &y);
             currentMoveIndex++;
             gameOver = playMinesweeperUtil(myBoard, realBoard, mines, x, y, &movesLeft);
