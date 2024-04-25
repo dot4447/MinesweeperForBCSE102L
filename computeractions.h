@@ -34,7 +34,8 @@ class Board { // All Board Settings
 
         void getMove(int *x, int *y) {      //Prompts user for input
             cout << "Enter move coordinates: ";
-            cin >> x >> y;
+            cin >> *x;
+            cin >> *y;
         }
 
         int Adjacent(int row, int col, int MineArray[][2]) {        //Counts number of adjacent MineArray to display on board
@@ -42,11 +43,11 @@ class Board { // All Board Settings
             int adjx[8] = {-1, -1, -1, 0, 0, 1, 1, 1};
             int adjy[8] = {-1, 0, 1, -1, 1, -1, 0, 1};
 
-            for (int i = 0; d < 8; d++) {
+            for (int i=0;i<8;i++) {
                 int pointx = row + adjx[i];
                 int pointy = col + adjy[i];
-                if (isValid(pointx, pointy)) {
-                    if (isMine(pointx, pointy))
+                if (checkValidity(pointx, pointy)) {
+                    if (checkMine(pointx, pointy))
                         count++;        //Increase number of adjacent MineArray for every adjacent VALID cell which has a mine
                 }
             }
@@ -56,20 +57,23 @@ class Board { // All Board Settings
         void display() {        //Prints board
             int i, j;
             cout<<"    ";
-            for (i=0;i<side;i++)
-                cout<<i;
-            cout<<"\n\n";
+            for (i=0;i<side;i++) {
+                cout<<i<<" ";
+            }
+            cout<<"\n";
             for (i=0;i<side;i++) {
                 cout<<i<<"   ";
-                for (j=0;j<side;j++)
-                    cout<<board[i][j]<<"\n";
+                for (j=0;j<side;j++) {
+                    cout<<board[i][j]<<" ";
+                }
+                cout<<"\n";
             }
         }
 
         void setMines(int MineArray[][2]) {     //Initialises the Board
             bool Locations[side*side];
             memset(Locations, false, sizeof(Locations));
-            for (int i=0;i<MineArray;i++) {
+            for (int i=0;i<numofmines;i++) {
                 int random = rand() % (side * side);
                 int x = random / side;
                 int y = random % side;
