@@ -3,7 +3,6 @@
 using namespace std;
 extern int side;
 extern int numofmines;
-extern int moves;
 
 class Play;
 bool checkValidity(int row, int col);
@@ -12,9 +11,9 @@ void printtest() {
     cout << "test";
 }
 
-class Board { // All Board Settings
+class Board {       //All Board Settings
     public:
-        char **board; // Creating a 2D char board
+        char **board;       //Creating a 2D char board
         Board() {
             board = new char* [side+1];
             for (int i=0;i<=side;i++) {
