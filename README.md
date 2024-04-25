@@ -5,6 +5,6 @@ To customize difficulty, the (square) board's side length and number of mines ca
 
 This project idea was found on GeeksforGeeks at (https://www.geeksforgeeks.org/top-50-cpp-project-ideas-for-beginners-advanced/) under the Intermediate Difficulty. We follow a algorithm similar to the one found on the same site.
 # Contributions
-Md Tausif: Made the actual game part of the code
+Md Tausif: Made the actual game part of the code: Running the game, taking and processing user moves.
 
 Aditya Sharma: Made the code to set/check/display the board and made driver code and README.
