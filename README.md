@@ -7,4 +7,4 @@ This project idea was found on GeeksforGeeks at (https://www.geeksforgeeks.org/t
 # Contributions
 Md Tausif: Made the actual game part of the code: Running the game, taking and processing user moves.
 
-Aditya Sharma: Made the code to set/check/display the board and made driver code and README.
+Aditya Sharma: Made the code to set/check/display the board, connected all 3 files, made README.
